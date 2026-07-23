@@ -1481,3 +1481,14 @@ footer small {
     scroll-behavior: auto;
   }
 }
+/* CSSの一番最後に追加してください */
+[class*="career"], 
+[class*="carrer"] {
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+}
+
+/* ページ全体でフォントを一括統一する設定 */
+*, ::before, ::after, html, body {
+  font-family: "Inter", "Helvetica Neue", Arial, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Meiryo", "Noto Sans JP", sans-serif !important;
+}
