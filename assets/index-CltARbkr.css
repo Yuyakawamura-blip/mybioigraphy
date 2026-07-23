@@ -1481,11 +1481,26 @@ footer small {
     scroll-behavior: auto;
   }
 }
-/* CSSの一番最後に追加してください */
-[class*="career"], 
-[class*="carrer"] {
+/* セクション内の左余白を一括でリセットして整列させる */
+main, section, div, h1, h2, h3, p {
+  box-sizing: border-box;
+}
+
+/* 「環境コンサルタントから〜」や「02」の入っている見出しブロックの余白リセット */
+section > div,
+[class*="career"],
+[class*="carrer"],
+[class*="hero"],
+[class*="title"] {
   padding-left: 0 !important;
   margin-left: 0 !important;
+}
+
+/* 全体の配置基準線を固定 */
+main > div,
+section > div {
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
 }
 
 /* ページ全体でフォントを一括統一する設定 */
