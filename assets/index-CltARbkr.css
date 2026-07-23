@@ -873,6 +873,87 @@ main {
   border-bottom: 8px solid transparent;
   z-index: 1;
 }
+.education-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  color: var(--ink);
+}
+
+.education-title {
+  font-size: var(--type-large);
+  font-weight: 700;
+  margin-bottom: 12px;
+  line-height: 1.35;
+}
+
+.education-title span {
+  font-size: var(--type-medium);
+  color: var(--moss);
+  font-weight: 400;
+}
+
+.education-intro {
+  font-size: var(--type-small);
+  line-height: 1.8;
+  color: #5f665f;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+/* タイムライン本体 */
+.timeline {
+  position: relative;
+  padding-left: 24px;
+  border-left: 2px solid var(--orange);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 32px;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* 縦線上のドット */
+.timeline-dot {
+  position: absolute;
+  left: -31px;
+  top: 4px;
+  width: 12px;
+  height: 12px;
+  background-color: var(--paper);
+  border: 3px solid var(--orange);
+  border-radius: 50%;
+}
+
+.timeline-content h4 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 4px 0 8px 0;
+  color: var(--ink);
+}
+
+.timeline-content p {
+  font-size: var(--type-small);
+  line-height: 1.6;
+  color: #5f665f;
+  margin: 0;
+}
+
+/* 小さなバッジタグ */
+.timeline-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--orange);
+  background-color: #fdf2ed;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
 .ai-lab {
   color: var(--paper);
   background: #071d1c;
