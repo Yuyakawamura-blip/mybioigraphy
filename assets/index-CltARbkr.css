@@ -954,6 +954,14 @@ main {
   padding: 2px 8px;
   border-radius: 4px;
 }
+
+/* 見出しタグ（h3やh4など）に指定 */
+.card-title {
+  /* 日本語の単語や文脈の区切りを考慮してきれいに改行する */
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
 .ai-lab {
   color: var(--paper);
   background: #071d1c;
