@@ -1525,3 +1525,7 @@ main section {
   max-width: 1200px !important;
   margin-x: auto !important;
 }
+/* 固定表示やレイアウトを壊さず、右側の無駄なはみ出しだけを防ぐ */
+html, body {
+  overflow-x: hidden;
+}
