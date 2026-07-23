@@ -2,9 +2,12 @@
 @layer theme {
   :root,
   :host {
+    /* 日本語フォントを綺麗に見せるモダンな指定 */
     --font-sans:
-      ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+      "Inter", "Helvetica Neue", Arial, "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+      "Meiryo", "Noto Sans JP", sans-serif, "Apple Color Emoji",
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    
     --font-mono:
       ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
@@ -36,9 +39,8 @@
     line-height: 1.5;
     font-family: var(
       --default-font-family,
-      ui-sans-serif,
-      system-ui,
-      sans-serif,
+      "Inter", "Helvetica Neue", Arial, "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+      "Meiryo", "Noto Sans JP", sans-serif,
       "Apple Color Emoji",
       "Segoe UI Emoji",
       "Segoe UI Symbol",
