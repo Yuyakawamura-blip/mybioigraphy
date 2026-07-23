@@ -1525,25 +1525,3 @@ main section {
   max-width: 1200px !important;
   margin-x: auto !important;
 }
-
-/* 1. 画面全体の横揺れ・横スクロールを完全に防止 */
-html, body {
-  overflow-x: hidden !important;
-  width: 100% !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-/* 2. すべての要素が画面幅を超えないように制御 */
-*, ::before, ::after {
-  max-width: 100% !important;
-  box-sizing: border-box !important;
-}
-
-/* 3. セクション幅を画面中央に綺麗に収める */
-main section {
-  width: 100% !important;
-  max-width: 1200px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
