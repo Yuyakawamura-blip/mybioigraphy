@@ -1481,29 +1481,47 @@ footer small {
     scroll-behavior: auto;
   }
 }
-/* セクション内の左余白を一括でリセットして整列させる */
-main, section, div, h1, h2, h3, p {
-  box-sizing: border-box;
+
+
+/* ===================================================
+   1. ページ全体のフォント統一（明朝体・ゴシック体の混在防止）
+   =================================================== */
+*, ::before, ::after, html, body {
+  font-family: "Inter", "Helvetica Neue", Arial, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Meiryo", "Noto Sans JP", sans-serif !important;
 }
 
-/* 「環境コンサルタントから〜」や「02」の入っている見出しブロックの余白リセット */
-section > div,
-[class*="career"],
-[class*="carrer"],
-[class*="hero"],
-[class*="title"] {
+/* ===================================================
+   2. 左端の整列＆インデント強制リセット
+   =================================================== */
+/* ページ内の主要コンテナの余白と幅を統一 */
+main, section, header, footer {
+  box-sizing: border-box !important;
+}
+
+/* タイトル・見出し・カード要素の左余白を完璧に揃える */
+main section,
+main section > div,
+main section h1,
+main section h2,
+main section h3,
+main section p,
+main section ul,
+main section ol {
   padding-left: 0 !important;
   margin-left: 0 !important;
 }
 
-/* 全体の配置基準線を固定 */
-main > div,
-section > div {
-  padding-left: 1.5rem !important;
-  padding-right: 1.5rem !important;
+/* タイムラインや経歴カード（2015―2019 等）の左グリッド位置調整 */
+main section .grid,
+main section [class*="grid"] {
+  padding-left: 0 !important;
+  margin-left: 0 !important;
 }
 
-/* ページ全体でフォントを一括統一する設定 */
-*, ::before, ::after, html, body {
-  font-family: "Inter", "Helvetica Neue", Arial, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Meiryo", "Noto Sans JP", sans-serif !important;
+/* 全体の左右基準線（コンテナパディング）を統一設定 */
+main section {
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+  max-width: 1200px !important;
+  margin-x: auto !important;
 }
