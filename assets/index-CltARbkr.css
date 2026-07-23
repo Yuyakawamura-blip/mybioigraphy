@@ -829,13 +829,17 @@ main {
   margin: 0;
   padding-left: 1.2em;
   display: grid;
+  list-style: "・  ";
 }
 .growth-grid li {
   font-size: var(--type-small);
   line-height: 1.75;
+  margin-bottom: 16px;
 }
 .growth-grid strong {
-  display: none;
+  display: inline;
+  font-weight: 600;
+  color: var(--orange);
 }
 .ai-lab {
   color: var(--paper);
