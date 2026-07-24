@@ -2,9 +2,12 @@
 @layer theme {
   :root,
   :host {
+    /* 日本語フォントを綺麗に見せるモダンな指定 */
     --font-sans:
-      ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+      "Inter", "Helvetica Neue", Arial, "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+      "Meiryo", "Noto Sans JP", sans-serif, "Apple Color Emoji",
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    
     --font-mono:
       ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
@@ -36,9 +39,8 @@
     line-height: 1.5;
     font-family: var(
       --default-font-family,
-      ui-sans-serif,
-      system-ui,
-      sans-serif,
+      "Inter", "Helvetica Neue", Arial, "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+      "Meiryo", "Noto Sans JP", sans-serif,
       "Apple Color Emoji",
       "Segoe UI Emoji",
       "Segoe UI Symbol",
@@ -1483,4 +1485,52 @@ footer small {
   html {
     scroll-behavior: auto;
   }
+}
+
+
+/* ===================================================
+   1. ページ全体のフォント統一（明朝体・ゴシック体の混在防止）
+   =================================================== */
+*, ::before, ::after, html, body {
+  font-family: "Inter", "Helvetica Neue", Arial, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Meiryo", "Noto Sans JP", sans-serif !important;
+}
+
+/* ===================================================
+   2. 左端の整列＆インデント強制リセット
+   =================================================== */
+/* ページ内の主要コンテナの余白と幅を統一 */
+main, section, header, footer {
+  box-sizing: border-box !important;
+}
+
+/* タイトル・見出し・カード要素の左余白を完璧に揃える */
+main section,
+main section > div,
+main section h1,
+main section h2,
+main section h3,
+main section p,
+main section ul,
+main section ol {
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+}
+
+/* タイムラインや経歴カード（2015―2019 等）の左グリッド位置調整 */
+main section .grid,
+main section [class*="grid"] {
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+}
+
+/* 全体の左右基準線（コンテナパディング）を統一設定 */
+main section {
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+  max-width: 1200px !important;
+  margin-x: auto !important;
+}
+/* 固定表示やレイアウトを壊さず、右側の無駄なはみ出しだけを防ぐ */
+html, body {
+  overflow-x: hidden;
 }
