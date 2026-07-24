@@ -16,6 +16,7 @@
     --default-mono-font-family: var(--font-mono);
   }
 }
+
 @layer base {
   *,
   :after,
@@ -37,15 +38,7 @@
     -webkit-text-size-adjust: 100%;
     tab-size: 4;
     line-height: 1.5;
-    font-family: var(
-      --default-font-family,
-      "Inter", "Helvetica Neue", Arial, "Hiragino Sans", "Hiragino Kaku Gothic ProN",
-      "Meiryo", "Noto Sans JP", sans-serif,
-      "Apple Color Emoji",
-      "Segoe UI Emoji",
-      "Segoe UI Symbol",
-      "Noto Color Emoji"
-    );
+    font-family: var(--default-font-family);
     font-feature-settings: var(--default-font-feature-settings, normal);
     font-variation-settings: var(--default-font-variation-settings, normal);
     -webkit-tap-highlight-color: transparent;
@@ -70,10 +63,6 @@
   }
   a {
     color: inherit;
-    -webkit-text-decoration: inherit;
-    -webkit-text-decoration: inherit;
-    -webkit-text-decoration: inherit;
-    -webkit-text-decoration: inherit;
     text-decoration: inherit;
   }
   b,
@@ -84,22 +73,9 @@
   kbd,
   samp,
   pre {
-    font-family: var(
-      --default-mono-font-family,
-      ui-monospace,
-      SFMono-Regular,
-      Menlo,
-      Monaco,
-      Consolas,
-      "Liberation Mono",
-      "Courier New",
-      monospace
-    );
+    font-family: var(--default-mono-font-family);
     font-feature-settings: var(--default-mono-font-feature-settings, normal);
-    font-variation-settings: var(
-      --default-mono-font-variation-settings,
-      normal
-    );
+    font-variation-settings: var(--default-mono-font-variation-settings, normal);
     font-size: 1em;
   }
   small {
@@ -159,113 +135,20 @@
   optgroup,
   textarea {
     font: inherit;
-    font-feature-settings: inherit;
-    font-variation-settings: inherit;
     letter-spacing: inherit;
     color: inherit;
     opacity: 1;
-    background-color: #0000;
+    background-color: transparent;
     border-radius: 0;
-  }
-  ::file-selector-button {
-    font: inherit;
-    font-feature-settings: inherit;
-    font-variation-settings: inherit;
-    letter-spacing: inherit;
-    color: inherit;
-    opacity: 1;
-    background-color: #0000;
-    border-radius: 0;
-  }
-  :where(select:is([multiple], [size])) optgroup {
-    font-weight: bolder;
-  }
-  :where(select:is([multiple], [size])) optgroup option {
-    padding-inline-start: 20px;
-  }
-  ::file-selector-button {
-    margin-inline-end: 4px;
-  }
-  ::placeholder {
-    opacity: 1;
-  }
-  @supports (not ((-webkit-appearance: -apple-pay-button))) or
-    (contain-intrinsic-size: 1px) {
-    ::placeholder {
-      color: currentColor;
-    }
-    @supports (color: color-mix(in lab, red, red)) {
-      ::placeholder {
-        color: color-mix(in oklab, currentcolor 50%, transparent);
-      }
-    }
   }
   textarea {
     resize: vertical;
-  }
-  ::-webkit-search-decoration {
-    -webkit-appearance: none;
-  }
-  ::-webkit-date-and-time-value {
-    min-height: 1lh;
-    text-align: inherit;
-  }
-  ::-webkit-datetime-edit {
-    display: inline-flex;
-  }
-  ::-webkit-datetime-edit-fields-wrapper {
-    padding: 0;
-  }
-  ::-webkit-datetime-edit {
-    padding-block: 0;
-  }
-  ::-webkit-datetime-edit-year-field {
-    padding-block: 0;
-  }
-  ::-webkit-datetime-edit-month-field {
-    padding-block: 0;
-  }
-  ::-webkit-datetime-edit-day-field {
-    padding-block: 0;
-  }
-  ::-webkit-datetime-edit-hour-field {
-    padding-block: 0;
-  }
-  ::-webkit-datetime-edit-minute-field {
-    padding-block: 0;
-  }
-  ::-webkit-datetime-edit-second-field {
-    padding-block: 0;
-  }
-  ::-webkit-datetime-edit-millisecond-field {
-    padding-block: 0;
-  }
-  ::-webkit-datetime-edit-meridiem-field {
-    padding-block: 0;
-  }
-  ::-webkit-calendar-picker-indicator {
-    line-height: 1;
-  }
-  :-moz-ui-invalid {
-    box-shadow: none;
-  }
-  button,
-  input:where([type="button"], [type="reset"], [type="submit"]) {
-    appearance: button;
-  }
-  ::file-selector-button {
-    appearance: button;
-  }
-  ::-webkit-inner-spin-button {
-    height: auto;
-  }
-  ::-webkit-outer-spin-button {
-    height: auto;
   }
   [hidden]:where(:not([hidden="until-found"])) {
     display: none !important;
   }
 }
+
 @layer components;
 @layer utilities {
   .relative {
@@ -278,6 +161,8 @@
     display: table;
   }
 }
+
+/* 共通カスタム変数 */
 :root {
   --paper: #f3f0e7;
   --ink: #1f2922;
@@ -289,31 +174,38 @@
   --type-large: 36px;
   --type-medium: 18px;
   --type-small: 16px;
+  --max-width: 1200px;
 }
+
 * {
   box-sizing: border-box;
 }
+
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
+
 body {
   background: var(--paper);
   color: var(--ink);
   margin: 0;
-  font-family:
-    Yu Mincho,
-    Hiragino Mincho ProN,
-    Noto Serif JP,
-    serif;
-  overflow-x: clip;
+  font-family: var(--default-font-family);
+  overflow-x: hidden;
 }
+
 a {
   color: inherit;
   text-decoration: none;
 }
+
+/* メイン枠組み：Sticky表示を阻害しない設定 */
 main {
-overflow: visible;
+  overflow: visible;
+  width: 100%;
 }
+
+/* --- ヘッダー領域 --- */
 .site-header {
   border-bottom: 1px solid var(--line);
   z-index: 10;
@@ -321,24 +213,25 @@ overflow: visible;
   align-items: center;
   height: 78px;
   padding: 0 4.5vw;
-  font-family:
-    Arial,
-    Hiragino Kaku Gothic ProN,
-    sans-serif;
   display: flex;
   position: relative;
+  max-width: var(--max-width);
+  margin: 0 auto;
 }
+
 .wordmark {
   letter-spacing: -0.06em;
   font-weight: 800;
   font-size: var(--type-medium);
 }
+
 .wordmark span {
   font-size: var(--type-small);
   color: var(--orange);
   letter-spacing: 0.08em;
   margin-left: 4px;
 }
+
 .site-header nav {
   text-transform: uppercase;
   font-size: var(--type-small);
@@ -347,32 +240,39 @@ overflow: visible;
   font-weight: 700;
   display: flex;
 }
+
 .site-header nav a {
   opacity: 0.7;
 }
+
 .site-header nav a:hover {
   opacity: 1;
   color: var(--green);
 }
+
+/* --- HERO セクション --- */
 .hero {
   border-bottom: 1px solid var(--line);
   grid-template-columns: 62% 38%;
   min-height: calc(86vh - 78px);
   display: grid;
+  max-width: var(--max-width);
+  margin: 0 auto;
 }
+
 .hero-copy {
   flex-direction: column;
   justify-content: center;
   padding: 6vh 5vw 5vh 6vw;
   display: flex;
 }
+
 .eyebrow {
-  font:
-    700 var(--type-small)/1.4 Arial,
-    sans-serif;
+  font: 700 var(--type-small)/1.4 var(--default-font-family);
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
+
 .hero h1 {
   font-size: var(--type-large);
   letter-spacing: 0;
@@ -380,29 +280,33 @@ overflow: visible;
   font-weight: 500;
   line-height: 1.28;
 }
+
 .hero h1 em,
 .north-star h2 em {
   color: var(--green);
   font-style: normal;
 }
+
 .lead {
   max-width: 760px;
   font-size: var(--type-medium);
   margin: 0 0 4vh;
   line-height: 1.85;
 }
+
 .hero-meta {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 28px;
-  font-family: Arial, sans-serif;
   display: grid;
 }
+
 .hero-meta div {
   flex-direction: column;
   gap: 8px;
   min-width: 0;
   display: flex;
 }
+
 .hero-meta span {
   font-size: var(--type-small);
   letter-spacing: 0.04em;
@@ -410,6 +314,7 @@ overflow: visible;
   color: #6d716b;
   white-space: nowrap;
 }
+
 .hero-meta strong {
   font-size: var(--type-small);
   max-width: none;
@@ -417,36 +322,42 @@ overflow: visible;
   overflow-wrap: normal;
   line-height: 1.7;
 }
+
 .hero-visual {
   background: var(--green);
   min-height: 500px;
   position: relative;
   overflow: hidden;
 }
+
 .contour {
   border: 1px solid #f3f0e759;
   border-radius: 45% 55% 50% 50%;
   position: absolute;
   transform: rotate(-9deg);
 }
+
 .contour-a {
   width: 78%;
   height: 68%;
   top: 10%;
   left: 11%;
 }
+
 .contour-b {
   width: 59%;
   height: 49%;
   top: 20%;
   left: 23%;
 }
+
 .contour-c {
   width: 38%;
   height: 29%;
   top: 30%;
   left: 34%;
 }
+
 .route-line {
   border-top: 2px dashed #d7ff55bf;
   width: 75%;
@@ -455,6 +366,7 @@ overflow: visible;
   left: -8%;
   transform: rotate(-38deg);
 }
+
 .route-point {
   background: var(--orange);
   border: 4px solid var(--paper);
@@ -464,14 +376,17 @@ overflow: visible;
   border-radius: 50%;
   position: absolute;
 }
+
 .point-a {
   top: 66%;
   left: 22%;
 }
+
 .point-b {
   top: 33%;
   left: 67%;
 }
+
 .visual-note {
   border-left: 5px solid var(--orange);
   background: #f3f0e7f2;
@@ -481,15 +396,18 @@ overflow: visible;
   bottom: 12%;
   right: 7%;
 }
+
 .visual-note small {
-  font: 700 var(--type-small) Arial;
+  font: 700 var(--type-small) var(--default-font-family);
   letter-spacing: 0.14em;
 }
+
 .visual-note p {
   font-size: var(--type-medium);
   margin: 8px 0 0;
   line-height: 1.7;
 }
+
 .coordinates {
   color: #ffffffb3;
   font: var(--type-small) monospace;
@@ -498,10 +416,13 @@ overflow: visible;
   top: 5%;
   right: 7%;
 }
+
+/* --- セクション全般 & Stickyヘッダー --- */
 .section {
   border-bottom: 1px solid var(--line);
   display: block;
 }
+
 .section-index {
   border-right: 0;
   border-bottom: 1px solid var(--line);
@@ -517,23 +438,38 @@ overflow: visible;
   position: sticky;
   top: 0;
 }
+
 .section-index span {
-  font: 700 var(--type-small) Arial;
+  font: 700 var(--type-small) var(--default-font-family);
   letter-spacing: 0.14em;
   color: var(--orange);
 }
+
 .section-index p {
   font-size: var(--type-medium);
   margin: 0;
   line-height: 1.5;
 }
+
 .section-index.light {
   background: #071d1cf5;
   border-color: #fff3;
 }
+
+/* --- セクション各コンテンツ（幅制限と中央配置） --- */
+.identity-copy,
+.journey-body,
+.practice-body,
+.richness-copy,
+.ai-content {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
 .identity-copy {
   padding: 6vh 6vw 7vh;
 }
+
 .statement {
   font-size: var(--type-large);
   letter-spacing: 0;
@@ -541,26 +477,26 @@ overflow: visible;
   margin: 0;
   line-height: 1.55;
 }
+
 .statement mark {
   color: var(--orange);
   border-bottom: 1px solid var(--orange);
-  background: 0 0;
+  background: transparent;
 }
+
 .identity-notes {
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
   margin-top: 5vh;
-  font-family:
-    Arial,
-    Hiragino Kaku Gothic ProN,
-    sans-serif;
   display: grid;
 }
+
 .identity-notes p {
   font-size: var(--type-small);
   margin: 0;
   line-height: 1.8;
 }
+
 .identity-notes span {
   font-size: var(--type-small);
   color: var(--green);
@@ -569,6 +505,7 @@ overflow: visible;
   font-weight: 700;
   display: block;
 }
+
 .identity-extra {
   border-top: 1px solid var(--ink);
   gap: 28px;
@@ -576,14 +513,17 @@ overflow: visible;
   padding-top: 38px;
   display: grid;
 }
+
 .identity-extra article {
   border-bottom: 1px solid var(--line);
   padding-bottom: 24px;
 }
+
 .identity-extra article:last-child {
   border-bottom: 0;
   padding-bottom: 0;
 }
+
 .identity-extra h3 {
   font-size: var(--type-large);
   letter-spacing: 0;
@@ -591,40 +531,45 @@ overflow: visible;
   font-weight: 500;
   line-height: 1.35;
 }
+
 .identity-extra h4 {
-  font:
-    700 var(--type-small) Arial,
-    sans-serif;
+  font: 700 var(--type-small) var(--default-font-family);
   letter-spacing: 0.08em;
   color: var(--orange);
   margin: 0 0 10px;
 }
+
 .identity-extra p {
   font-size: var(--type-small);
   max-width: 980px;
   margin: 0 0 10px;
   line-height: 1.85;
 }
+
 .identity-extra-grid {
   grid-template-columns: repeat(4, 1fr);
   gap: 22px;
   margin-top: 20px;
   display: grid;
 }
+
 .identity-extra-grid div {
   border-top: 1px solid var(--line);
   padding-top: 18px;
 }
+
 .journey-body,
 .practice-body {
   padding: 55px 6vw 70px;
 }
+
 .section-heading > p,
 .split-heading > div > p {
-  font: 700 var(--type-small) Arial;
+  font: 700 var(--type-small) var(--default-font-family);
   letter-spacing: 0.14em;
   color: var(--orange);
 }
+
 .section-heading h2 {
   font-size: var(--type-large);
   letter-spacing: 0;
@@ -632,9 +577,12 @@ overflow: visible;
   font-weight: 500;
   line-height: 1.35;
 }
+
+/* --- タイムライン & 経歴 --- */
 .timeline {
   border-top: 1px solid var(--ink);
 }
+
 .career-item {
   border-bottom: 1px solid var(--line);
   grid-template-columns: 140px 1fr;
@@ -643,6 +591,7 @@ overflow: visible;
   display: grid;
   position: relative;
 }
+
 .career-item:before {
   content: "";
   border: 1px solid var(--green);
@@ -654,71 +603,80 @@ overflow: visible;
   top: 31px;
   left: 132px;
 }
+
 .career-item.active:before {
   background: var(--orange);
   border-color: var(--orange);
   box-shadow: 0 0 0 5px #c45e3b26;
 }
+
 .career-year {
-  font: 700 var(--type-small) Arial;
+  font: 700 var(--type-small) var(--default-font-family);
   letter-spacing: 0.08em;
   padding-top: 5px;
 }
+
 .career-tag {
-  font: 700 var(--type-small) Arial;
+  font: 700 var(--type-small) var(--default-font-family);
   letter-spacing: 0.08em;
   color: var(--orange);
 }
+
 .career-item h3 {
   font-size: var(--type-large);
   margin: 5px 0;
 }
+
 .career-item h3 a {
   background-image: linear-gradient(var(--orange), var(--orange));
   background-position: 0 100%;
   background-repeat: no-repeat;
   background-size: 0 1px;
-  transition:
-    background-size 0.2s,
-    color 0.2s;
+  transition: background-size 0.2s, color 0.2s;
 }
+
 .career-item h3 a:hover {
   color: var(--green);
   background-size: 100% 1px;
 }
+
 .career-item p {
   font-size: var(--type-small);
   max-width: 900px;
   margin: 0;
   line-height: 1.8;
 }
+
 .career-link {
-  font:
-    700 var(--type-small) Arial,
-    sans-serif;
+  font: 700 var(--type-small) var(--default-font-family);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--orange);
   margin-top: 12px;
   display: inline-flex;
 }
+
+/* --- グリッドレイアウト類 --- */
 .split-heading {
   grid-template-columns: 1fr;
   align-items: end;
   gap: 20px;
   display: grid;
 }
+
 .heading-note {
   font-size: var(--type-small);
   margin: 0 0 36px;
   line-height: 1.8;
 }
+
 .role-grid {
   border-top: 1px solid var(--ink);
   border-left: 1px solid var(--line);
   grid-template-columns: repeat(4, 1fr);
   display: grid;
 }
+
 .role-card {
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
@@ -727,54 +685,70 @@ overflow: visible;
   padding: 26px;
   display: flex;
 }
+
 .role-card > span {
-  font: 700 var(--type-small) Arial;
+  font: 700 var(--type-small) var(--default-font-family);
   color: var(--orange);
   letter-spacing: 0.08em;
 }
+
 .role-card h3 {
   font-size: var(--type-large);
   margin: 18px 0 10px;
 }
+
 .role-card p {
   font-size: var(--type-small);
   margin: 0;
   line-height: 1.8;
 }
+
 .role-card small {
-  font: 700 var(--type-small) Arial;
+  font: 700 var(--type-small) var(--default-font-family);
   letter-spacing: 0.08em;
   color: var(--green);
   margin-top: auto;
   padding-top: 18px;
 }
+
+/* --- 北極星（North Star）セクション --- */
 .north-star {
   background: var(--green);
   color: var(--paper);
   padding: 8vh 6vw;
   position: relative;
 }
+
+.north-star > * {
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .north-star:after {
   content: "365";
-  font: 700 var(--type-large) Arial;
+  font: 700 var(--type-large) var(--default-font-family);
   color: #ffffff14;
   letter-spacing: 0;
   position: absolute;
   bottom: -2vw;
   right: 3vw;
 }
+
 .north-star h2 {
   font-size: var(--type-large);
   letter-spacing: 0;
   z-index: 1;
-  margin: 24px 0;
+  margin: 24px auto;
   font-weight: 500;
   line-height: 1.35;
   position: relative;
 }
+
 .north-star h2 em {
   color: var(--acid);
 }
+
 .north-star > p:not(.eyebrow) {
   font-size: var(--type-medium);
   z-index: 1;
@@ -782,6 +756,7 @@ overflow: visible;
   line-height: 1.85;
   position: relative;
 }
+
 .success-list {
   z-index: 1;
   flex-wrap: wrap;
@@ -790,17 +765,23 @@ overflow: visible;
   display: flex;
   position: relative;
 }
+
 .success-list span {
-  font: 700 var(--type-small) Arial;
+  font: 700 var(--type-small) var(--default-font-family);
   letter-spacing: 0.04em;
   border: 1px solid #fff6;
   padding: 10px 14px;
 }
+
+/* --- スキル・成長リスト --- */
 .growth-grid {
   border-top: 1px solid var(--line);
   grid-template-columns: 1fr;
   display: grid;
+  max-width: var(--max-width);
+  margin: 0 auto;
 }
+
 .growth-grid article {
   border-right: 0;
   border-bottom: 1px solid var(--line);
@@ -811,21 +792,25 @@ overflow: visible;
   padding: 34px 6vw;
   display: grid;
 }
+
 .growth-grid span {
-  font: 700 var(--type-small) Arial;
+  font: 700 var(--type-small) var(--default-font-family);
   color: var(--orange);
   letter-spacing: 0.08em;
 }
+
 .growth-grid h3 {
   font-size: var(--type-large);
   margin: 0;
   line-height: 1.35;
 }
+
 .growth-grid p {
   font-size: var(--type-small);
   margin: 0;
   line-height: 1.85;
 }
+
 .growth-grid ul {
   gap: 8px;
   margin: 0;
@@ -833,16 +818,19 @@ overflow: visible;
   display: grid;
   list-style: "・  ";
 }
+
 .growth-grid li {
   font-size: var(--type-small);
   line-height: 1.75;
   margin-bottom: 16px;
 }
+
 .growth-grid strong {
   display: inline;
   font-weight: 600;
   color: var(--orange);
 }
+
 .flow-list {
   list-style: none;
   display: flex;
@@ -852,6 +840,7 @@ overflow: visible;
   padding: 0;
   align-items: center;
 }
+
 .flow-list li {
   font-size: var(--type-small);
   line-height: 1.75;
@@ -862,6 +851,7 @@ overflow: visible;
   white-space: nowrap;
   margin: 0;
 }
+
 .flow-list li:not(:last-child):after {
   content: "";
   position: absolute;
@@ -875,6 +865,8 @@ overflow: visible;
   border-bottom: 8px solid transparent;
   z-index: 1;
 }
+
+/* --- 学歴・タイムライン --- */
 .education-section {
   max-width: 800px;
   margin: 0 auto;
@@ -904,8 +896,7 @@ overflow: visible;
   border-bottom: 1px solid var(--line);
 }
 
-/* タイムライン本体 */
-.timeline {
+.education-timeline {
   position: relative;
   padding-left: 24px;
   border-left: 2px solid var(--orange);
@@ -920,7 +911,6 @@ overflow: visible;
   margin-bottom: 0;
 }
 
-/* 縦線上のドット */
 .timeline-dot {
   position: absolute;
   left: -31px;
@@ -946,7 +936,6 @@ overflow: visible;
   margin: 0;
 }
 
-/* 小さなバッジタグ */
 .timeline-tag {
   display: inline-block;
   font-size: 0.75rem;
@@ -957,25 +946,27 @@ overflow: visible;
   border-radius: 4px;
 }
 
-/* 見出しタグ（h3やh4など）に指定 */
 .card-title {
-  /* 日本語の単語や文脈の区切りを考慮してきれいに改行する */
   word-break: keep-all;
   overflow-wrap: break-word;
 }
 
+/* --- AI Lab セクション --- */
 .ai-lab {
   color: var(--paper);
   background: #071d1c;
   border-color: #25403c;
 }
+
 .ai-lab .section-index {
   border-color: #25403c;
 }
+
 .ai-content {
   min-height: 42vh;
   padding: 60px 6vw 70px;
 }
+
 .ai-content h2 {
   font-size: var(--type-large);
   letter-spacing: 0;
@@ -983,21 +974,26 @@ overflow: visible;
   font-weight: 500;
   line-height: 1.35;
 }
+
 .ai-lead {
   font-size: var(--type-medium);
   color: #bcc8c1;
   max-width: 850px;
   line-height: 1.85;
 }
+
+/* --- Richness セクション --- */
 .richness-copy {
   padding: 65px 6vw 75px;
 }
+
 .richness-copy > p {
   font-size: var(--type-large);
   letter-spacing: 0;
   margin: 0;
   line-height: 1.5;
 }
+
 .richness blockquote {
   font-size: var(--type-medium);
   border-left: 4px solid var(--orange);
@@ -1006,6 +1002,8 @@ overflow: visible;
   padding: 8px 0 8px 30px;
   line-height: 1.9;
 }
+
+/* --- フッター --- */
 footer {
   background: var(--ink);
   color: var(--paper);
@@ -1013,32 +1011,37 @@ footer {
   align-items: center;
   min-height: 150px;
   padding: 34px 5vw;
-  font-family: Arial, sans-serif;
   display: grid;
 }
+
 footer div {
   flex-direction: column;
   gap: 8px;
   display: flex;
 }
+
 footer strong {
   font-size: var(--type-medium);
 }
+
 footer span,
 footer small {
   font-size: var(--type-small);
   letter-spacing: 0.08em;
   color: #abb2ac;
 }
+
 footer a {
   font-size: var(--type-small);
   border-bottom: 1px solid #777;
   padding-bottom: 5px;
 }
+
 footer small {
   grid-column: 1/-1;
   align-self: end;
 }
+
 .deploy-badge {
   color: #d7ddd8;
   font-size: var(--type-small);
@@ -1049,10 +1052,13 @@ footer small {
   justify-self: start;
   padding: 10px 13px;
 }
+
+/* --- 下層・詳細ページ系 --- */
 .career-detail-page {
   background: var(--paper);
   min-height: 100vh;
 }
+
 .career-detail-header {
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
@@ -1060,20 +1066,23 @@ footer small {
   position: sticky;
   top: 0;
 }
+
 .career-detail-hero {
   border-bottom: 1px solid var(--line);
   padding: 90px 7vw 105px;
+  max-width: var(--max-width);
+  margin: 0 auto;
 }
+
 .back-link {
-  font:
-    700 var(--type-small) Arial,
-    sans-serif;
+  font: 700 var(--type-small) var(--default-font-family);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--orange);
   margin-bottom: 55px;
   display: inline-flex;
 }
+
 .career-detail-hero h1 {
   font-size: var(--type-large);
   letter-spacing: 0;
@@ -1081,6 +1090,7 @@ footer small {
   font-weight: 500;
   line-height: 1.25;
 }
+
 .career-detail-hero > p:not(.eyebrow) {
   font-size: var(--type-large);
   letter-spacing: 0;
@@ -1088,11 +1098,15 @@ footer small {
   margin: 0;
   line-height: 1.45;
 }
+
 .career-detail-body {
   border-bottom: 1px solid var(--line);
   grid-template-columns: 28% 72%;
   display: grid;
+  max-width: var(--max-width);
+  margin: 0 auto;
 }
+
 .career-detail-aside {
   border-right: 1px solid var(--line);
   align-self: start;
@@ -1100,31 +1114,35 @@ footer small {
   position: sticky;
   top: 79px;
 }
+
 .career-detail-aside span {
-  font:
-    700 var(--type-small) Arial,
-    sans-serif;
+  font: 700 var(--type-small) var(--default-font-family);
   letter-spacing: 0.08em;
   color: var(--orange);
 }
+
 .career-detail-aside p {
   font-size: var(--type-medium);
   margin: 28px 0 0;
   line-height: 1.8;
 }
+
 .career-detail-main {
   padding: 80px 8vw 110px 7vw;
 }
+
 .career-detail-lead {
   font-size: var(--type-medium);
   letter-spacing: 0;
   margin: 0 0 80px;
   line-height: 1.9;
 }
+
 .detail-section {
   border-top: 1px solid var(--ink);
   padding: 38px 0 55px;
 }
+
 .detail-section h2,
 .photo-section h2 {
   font-size: var(--type-large);
@@ -1133,10 +1151,12 @@ footer small {
   font-weight: 500;
   line-height: 1.35;
 }
+
 .detail-list {
   gap: 14px;
   display: grid;
 }
+
 .detail-list p {
   font-size: var(--type-small);
   margin: 0;
@@ -1144,6 +1164,7 @@ footer small {
   line-height: 1.9;
   position: relative;
 }
+
 .detail-list p:before {
   content: "";
   background: var(--orange);
@@ -1154,6 +1175,7 @@ footer small {
   top: 13px;
   left: 0;
 }
+
 .detail-section blockquote {
   font-size: var(--type-medium);
   border-left: 4px solid var(--orange);
@@ -1161,44 +1183,47 @@ footer small {
   padding: 8px 0 8px 36px;
   line-height: 2;
 }
+
 .reference-grid {
   grid-template-columns: 1fr 1fr;
   gap: 18px;
   display: grid;
 }
+
 .reference-card {
   border: 1px solid var(--line);
   flex-direction: column;
   min-height: 190px;
   padding: 26px;
-  transition:
-    border-color 0.2s,
-    transform 0.2s;
+  transition: border-color 0.2s, transform 0.2s;
   display: flex;
 }
+
 .reference-card:hover {
   border-color: var(--orange);
   transform: translateY(-2px);
 }
+
 .reference-card span {
-  font:
-    700 var(--type-small) Arial,
-    sans-serif;
+  font: 700 var(--type-small) var(--default-font-family);
   letter-spacing: 0.08em;
   color: var(--orange);
   text-transform: uppercase;
 }
+
 .reference-card strong {
   font-size: var(--type-medium);
   margin: 20px 0 14px;
   line-height: 1.35;
 }
+
 .reference-card p {
   font-size: var(--type-small);
   color: #5f665f;
   margin: 0;
   line-height: 1.8;
 }
+
 .photo-section {
   border-top: 1px solid var(--ink);
   grid-template-columns: 0.8fr 1.2fr;
@@ -1207,15 +1232,18 @@ footer small {
   padding-top: 42px;
   display: grid;
 }
+
 .photo-grid {
   grid-template-columns: 1fr 1fr;
   gap: 18px;
   display: grid;
 }
+
 .career-photo,
 .photo-placeholder {
   margin: 0;
 }
+
 .career-photo img {
   aspect-ratio: 4/3;
   object-fit: cover;
@@ -1223,6 +1251,7 @@ footer small {
   width: 100%;
   display: block;
 }
+
 .career-photo figcaption,
 .photo-placeholder figcaption {
   font-size: var(--type-small);
@@ -1230,34 +1259,41 @@ footer small {
   margin-top: 12px;
   line-height: 1.7;
 }
+
 .photo-placeholder div {
   aspect-ratio: 4/3;
   background: linear-gradient(135deg, #164f39e6, #c45e3bd1);
   position: relative;
   overflow: hidden;
 }
+
 .photo-placeholder div:after {
   content: "PHOTO";
-  font:
-    700 var(--type-small) Arial,
-    sans-serif;
+  font: 700 var(--type-small) var(--default-font-family);
   letter-spacing: 0.12em;
   color: #f3f0e7bf;
   position: absolute;
   bottom: 18px;
   left: 22px;
 }
+
 .career-detail-footer {
   min-height: 150px;
 }
+
+/* --- デプロイ確認ページ --- */
 .deploy-page {
   background: var(--paper);
   min-height: 100vh;
 }
+
 .deploy-hero {
   border-bottom: 1px solid var(--line);
   padding: 95px 7vw 90px;
+  max-width: var(--max-width);
+  margin: 0 auto;
 }
+
 .deploy-hero h1 {
   font-size: var(--type-large);
   letter-spacing: 0;
@@ -1265,17 +1301,22 @@ footer small {
   font-weight: 500;
   line-height: 1.35;
 }
+
 .deploy-hero > p:not(.eyebrow) {
   font-size: var(--type-medium);
   max-width: 920px;
   line-height: 1.8;
 }
+
 .deploy-body {
   grid-template-columns: 0.75fr 1.25fr;
   gap: 42px;
   padding: 70px 7vw 100px;
   display: grid;
+  max-width: var(--max-width);
+  margin: 0 auto;
 }
+
 .deploy-status-card {
   background: var(--green);
   color: var(--paper);
@@ -1285,31 +1326,30 @@ footer small {
   padding: 34px;
   display: flex;
 }
+
 .deploy-status-card span {
-  font:
-    700 var(--type-small) Arial,
-    sans-serif;
+  font: 700 var(--type-small) var(--default-font-family);
   letter-spacing: 0.08em;
   color: var(--acid);
   text-transform: uppercase;
 }
+
 .deploy-status-card strong {
-  font:
-    700 var(--type-large)/1.2 Arial,
-    sans-serif;
+  font: 700 var(--type-large)/1.2 var(--default-font-family);
   letter-spacing: 0;
 }
+
 .deploy-status-card p {
-  font:
-    var(--type-small) Arial,
-    sans-serif;
+  font: var(--type-small) var(--default-font-family);
   letter-spacing: 0.04em;
   color: #dce5dd;
   margin: 0;
 }
+
 .deploy-table {
   border-top: 1px solid var(--ink);
 }
+
 .deploy-table div {
   border-bottom: 1px solid var(--line);
   grid-template-columns: 180px 1fr;
@@ -1317,36 +1357,38 @@ footer small {
   padding: 22px 0;
   display: grid;
 }
+
 .deploy-table dt {
-  font:
-    700 var(--type-small) Arial,
-    sans-serif;
+  font: 700 var(--type-small) var(--default-font-family);
   letter-spacing: 0.08em;
   color: var(--orange);
 }
+
 .deploy-table dd {
-  font:
-    var(--type-small) Arial,
-    "Hiragino Kaku Gothic ProN",
-    sans-serif;
+  font: var(--type-small) var(--default-font-family);
   word-break: break-word;
   margin: 0;
 }
+
 .deploy-note {
   border-left: 4px solid var(--orange);
   grid-column: 2;
   padding-left: 28px;
 }
+
 .deploy-note h2 {
   font-size: var(--type-large);
   margin: 0 0 16px;
 }
+
 .deploy-note p {
   font-size: var(--type-small);
   margin: 0 0 16px;
   line-height: 2;
 }
-@media (width<=1100px) {
+
+/* --- レスポンシブ（画面幅ごとの調整） --- */
+@media (width <= 1100px) {
   .identity-notes,
   .identity-extra-grid {
     grid-template-columns: 1fr 1fr;
@@ -1358,7 +1400,8 @@ footer small {
     grid-template-columns: 120px 220px 1fr;
   }
 }
-@media (width<=900px) {
+
+@media (width <= 900px) {
   .site-header nav {
     display: none;
   }
@@ -1432,7 +1475,8 @@ footer small {
     grid-template-columns: 1fr;
   }
 }
-@media (width<=600px) {
+
+@media (width <= 600px) {
   .hero-meta {
     grid-template-columns: 1fr;
   }
@@ -1476,56 +1520,9 @@ footer small {
     padding-left: 24px;
   }
 }
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-}
-
-
-/* ===================================================
-   1. ページ全体のフォント統一（明朝体・ゴシック体の混在防止）
-   =================================================== */
-*, ::before, ::after, html, body {
-  font-family: "Inter", "Helvetica Neue", Arial, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Meiryo", "Noto Sans JP", sans-serif !important;
-}
-
-/* ===================================================
-   2. 左端の整列＆インデント強制リセット
-   =================================================== */
-/* ページ内の主要コンテナの余白と幅を統一 */
-main, section, header, footer {
-  box-sizing: border-box !important;
-}
-
-/* タイトル・見出し・カード要素の左余白を完璧に揃える */
-main section,
-main section > div,
-main section h1,
-main section h2,
-main section h3,
-main section p,
-main section ul,
-main section ol {
-  padding-left: 0 !important;
-  margin-left: 0 !important;
-}
-
-/* タイムラインや経歴カード（2015―2019 等）の左グリッド位置調整 */
-main section .grid,
-main section [class*="grid"] {
-  padding-left: 0 !important;
-  margin-left: 0 !important;
-}
-
-/* 全体の左右基準線（コンテナパディング）を統一設定 */
-main section {
-  padding-left: 1.5rem !important;
-  padding-right: 1.5rem !important;
-  max-width: 1200px !important;
-  margin-x: auto !important;
-}
-/* 固定表示やレイアウトを壊さず、右側の無駄なはみ出しだけを防ぐ */
-html, body {
-  overflow-x: hidden;
 }
