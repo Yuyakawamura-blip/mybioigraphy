@@ -505,13 +505,13 @@ img {
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
 
 .education-timeline .edu-title {
   font-size: var(--type-medium);
   font-weight: 600;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .education-timeline .edu-desc {
@@ -546,7 +546,7 @@ img {
   font-weight: 600;
   color: var(--gray-500);
   letter-spacing: 0.05em;
-  padding-top: 2px;
+  padding-top: 4px;
 }
 
 .career-info .career-tag {
@@ -719,7 +719,7 @@ img {
   color: var(--gray-400);
   line-height: 1.85;
   max-width: 780px;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 
 .success-list {
@@ -763,7 +763,7 @@ img {
   color: var(--gray-400);
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  padding-top: 2px;
+  padding-top: 4px;
 }
 
 .growth-item h3 {
@@ -823,7 +823,7 @@ img {
   font-size: var(--type-medium);
   color: var(--gray-600);
   line-height: 1.85;
-  margin-bottom: 48px;
+  margin-bottom: 42px;
   max-width: 600px;
 }
 
@@ -857,7 +857,7 @@ img {
   font-size: var(--type-large);
   font-weight: 400;
   line-height: 1.65;
-  margin-bottom: 48px;
+  margin-bottom: 42px;
 }
 
 .richness-copy blockquote {
