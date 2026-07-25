@@ -183,7 +183,7 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
@@ -208,13 +208,15 @@ main {
 /* --- ヘッダー領域 --- */
 .site-header {
   border-bottom: 1px solid var(--line);
-  z-index: 10;
+  z-index: 100;
   justify-content: space-between;
   align-items: center;
   height: 78px;
   padding: 0 4.5vw;
   display: flex;
-  position: relative;
+  position: sticky;
+  top: 0;
+  background: var(--paper);
   max-width: var(--max-width);
   margin: 0 auto;
 }
@@ -428,7 +430,7 @@ main {
   border-bottom: 1px solid var(--line);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
-  z-index: 10;
+  z-index: 99;
   background: #f3f0e7f5;
   align-items: center;
   gap: 22px;
@@ -436,7 +438,7 @@ main {
   padding: 14px 6vw;
   display: flex;
   position: sticky;
-  top: 0;
+  top: 78px;
 }
 
 .section-index span {
@@ -454,6 +456,7 @@ main {
 .section-index.light {
   background: #071d1cf5;
   border-color: #fff3;
+  top: 78px;
 }
 
 /* --- セクション各コンテンツ（幅制限と中央配置） --- */
