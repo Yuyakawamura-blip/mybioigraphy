@@ -331,11 +331,24 @@ img {
   position: relative;
 }
 
-.section-header {
+/* --- Sticky Section Header --- */
+.section > .section-header {
+  position: sticky;
+  top: var(--header-h);
+  z-index: 5;
+  background: var(--white);
   display: flex;
   align-items: baseline;
   gap: 18px;
-  margin-bottom: 48px;
+  padding: 16px 5vw;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  border-bottom: 1px solid var(--gray-200);
+  scroll-margin-top: calc(var(--header-h) + 60px);
+}
+
+.section--layer > .section-header {
+  background: var(--white);
 }
 
 .section-header .section-number {

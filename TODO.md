@@ -1,33 +1,34 @@
-# リデザイン TODO
+# TODO: Sticky Section Headers + Section ID/Name Changes
 
-## Phase 1: CSS 変数・ベース設計
-- [x] CSS変数を白黒基調に変更
-- [x] ベーススタイル（body, html, タイポグラフィ）刷新
-- [x] ヘッダー（白背景スティッキー）スタイル
-- [x] セクション共通スタイル（区切り線、余白）
+## Steps
 
-## Phase 2: index.html 構造変更
-- [x] ヘッダー構造（YKロゴ + ナビ）
-- [x] ヒーローセクション（写真プレースホルダー追加）
-- [x] IDENTITY セクション（statement + 4強み + フロー図SVG）
-- [x] CAREER セクション（タイムライン）
-- [x] PRACTICE セクション（8カード + モノクロアイコン + プロセスフロー）
-- [x] NEXT STEP セクション
-- [x] GROWTH / AI Lab / RICHNESS セクション
-- [x] フッター
+### Step 1: HTML — Move `.section-header` outside `.section-inner`
+- [x] `#identity` section
+- [x] `#career` section
+- [x] `#SKILL` section (03 SKILL)
+- [x] `#skill` section → became `#goal` (04 GOAL)
+- [x] `#growth` section
+- [x] `#richness` section → became `#vision` (06 VISION)
 
-## Phase 3: CSS 全スタイル実装
-- [x] ヘッダースタイル
-- [x] ヒーロースタイル（写真枠含む）
-- [x] IDENTITYスタイル（4強み、フロー図）
-- [x] CAREERスタイル（タイムライン）
-- [x] PRACTICEスタイル（8カード + アイコン + プロセスフロー）
-- [x] NEXT STEPスタイル
-- [x] GROWTH / AI Lab / RICHNESS スタイル
-- [x] フッタースタイル
-- [x] レスポンシブ対応
+### Step 2: HTML — Rename #skill → #goal (section 04)
+- [x] Changed id from `skill` to `goal`
+- [x] Changed h2 text from `SKILL` to `GOAL`
+- [x] Changed .section-sub text from `身につける力` to `目標`
 
-## Phase 4: 動作確認
-- [ ] HTML/CSS 整合性チェック
-- [ ] レスポンシブブレークポイント確認
+### Step 3: HTML — Rename #richness → #vision (section 06)
+- [x] Changed id from `richness` to `vision`
+- [x] Changed h2 text from `RICHNESS` to `VISION`
+- [x] Changed .section-sub text from `豊かさの再定義` to `ビジョン`
+
+### Step 4: CSS — Add sticky styles for `.section-header`
+- [x] Added `position: sticky; top: var(--header-h);` etc.
+- [x] Handled `section--layer` header background
+- [x] No padding-top adjustment needed (header is outside .section-inner)
+- [x] Responsive compatibility maintained
+
+### Step 5: Verify
+- [x] All section headers moved outside .section-inner ✓
+- [x] Section IDs and names updated correctly ✓
+- [x] Sticky CSS added with proper z-index and background ✓
+- [x] Nav links match section IDs (identity, career, SKILL, goal, vision) ✓
 
