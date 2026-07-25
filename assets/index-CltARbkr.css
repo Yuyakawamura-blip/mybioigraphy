@@ -167,7 +167,7 @@ img {
   grid-template-columns: 1fr 1fr;
   max-width: var(--max-width);
   margin: 0 auto;
-  min-height: calc(90vh - var(--header-h));
+  min-height: calc(70vh - var(--header-h));
   position: relative;
 }
 
@@ -187,7 +187,7 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 6vh 4vw 6vh 5vw;
+  padding: 4vh 4vw 4vh 5vw;
 }
 
 .hero .eyebrow {
@@ -196,15 +196,15 @@ img {
   letter-spacing: 0.18em;
   color: var(--gray-500);
   text-transform: uppercase;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .hero h1 {
   font-size: var(--type-hero);
   font-weight: 500;
-  line-height: 1.25;
+  line-height: 1.2;
   letter-spacing: -0.02em;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1rem;
 }
 
 .hero h1 em {
@@ -216,25 +216,25 @@ img {
 .hero .lead {
   font-size: var(--type-medium);
   color: var(--gray-600);
-  line-height: 1.8;
-  margin-bottom: 2.5rem;
-  max-width: 480px;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  max-width: 440px;
 }
 
 .hero-meta {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 20px;
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
 }
 
 .hero-meta div {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 }
 
 .hero-meta span {
-  font-size: var(--type-xs);
+  font-size: 11px;
   color: var(--gray-400);
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -243,16 +243,16 @@ img {
 .hero-meta strong {
   font-size: var(--type-small);
   font-weight: 600;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
-/* --- Hero Right: Photo Placeholder --- */
+/* --- Hero Right: Photo --- */
 .hero-visual {
   background: var(--gray-100);
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 500px;
+  min-height: 400px;
   position: relative;
   overflow: hidden;
 }
@@ -263,6 +263,7 @@ img {
   object-fit: contain;
   display: block;
   background: var(--gray-100);
+  padding: 20px;
 }
 
 /* --- Hero Photo --- */
