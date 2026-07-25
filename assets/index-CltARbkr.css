@@ -428,7 +428,7 @@ main {
   border-bottom: 1px solid var(--line);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
-  z-index: 6;
+  z-index: 10;
   background: #f3f0e7f5;
   align-items: center;
   gap: 22px;
