@@ -1,6 +1,7 @@
 /* ============================================================
    Biography — Yuya Kawamura
-   Clean Black & White Design (inspired by dentsusoken.com)
+   Design inspired by Dentsu Soken (dentsusoken.com)
+   Clean corporate Black & White with polygon clip aesthetics
    ============================================================ */
 
 /* --- Font & Variables --- */
@@ -21,6 +22,8 @@
   --gray-600: #666666;
   --gray-700: #4a4a4a;
   --gray-800: #333333;
+  --accent-gray: #646464;
+  --accent-light: #9e9e9e;
 
   --type-hero: 48px;
   --type-large: 32px;
@@ -31,6 +34,12 @@
   --max-width: 1100px;
   --header-h: 72px;
   --section-gap: 80px;
+}
+
+/* --- Aurora Animation (dentsusoken-style bg) --- */
+@keyframes aurora {
+  0% { background-position: 0 0; }
+  100% { background-position: 100% 0; }
 }
 
 /* --- Reset & Base --- */
@@ -46,6 +55,7 @@ html {
   scroll-behavior: smooth;
   overflow-x: clip;
   font-size: 16px;
+  scroll-padding-top: var(--header-h);
 }
 
 body {
@@ -69,14 +79,13 @@ img {
 }
 
 /* ============================================================
-   Sticky Header
+   Sticky Header (Dentsu Soken style)
    ============================================================ */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 100;
   background: rgba(255, 255, 255, 0.97);
-  border-bottom: 1px solid var(--gray-200);
   height: var(--header-h);
   display: flex;
   align-items: center;
@@ -84,12 +93,42 @@ img {
   padding: 0 5vw;
   max-width: var(--max-width);
   margin: 0 auto;
+  /* Dentsu-style bottom accent bar */
+  position: relative;
+}
+
+.site-header::after {
+  content: "";
+  display: block;
+  height: 6px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  background-color: var(--accent-light);
+  clip-path: polygon(0 0, 100% 0, calc(100% - 24px) 100%, 0 100%);
+}
+
+.site-header::before {
+  content: "";
+  display: block;
+  height: 6px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 80px;
+  z-index: 11;
+  background-color: var(--accent-gray);
+  clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 100%, 0 100%);
 }
 
 .wordmark {
   font-size: 22px;
   font-weight: 700;
   letter-spacing: -0.04em;
+  position: relative;
+  z-index: 1;
 }
 
 .wordmark span {
@@ -103,6 +142,8 @@ img {
 .site-header nav {
   display: flex;
   gap: 28px;
+  position: relative;
+  z-index: 1;
 }
 
 .site-header nav a {
@@ -119,7 +160,7 @@ img {
 }
 
 /* ============================================================
-   Hero Section
+   Hero Section (Dentsu Soken style)
    ============================================================ */
 .hero {
   display: grid;
@@ -127,7 +168,19 @@ img {
   max-width: var(--max-width);
   margin: 0 auto;
   min-height: calc(90vh - var(--header-h));
-  border-bottom: 1px solid var(--gray-200);
+  position: relative;
+}
+
+.hero::after {
+  content: "";
+  display: block;
+  height: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(90deg, var(--white), var(--gray-100));
+  z-index: 1;
 }
 
 .hero-copy {
@@ -233,16 +286,49 @@ img {
 }
 
 /* ============================================================
-   Section Common
+   Section Common (Dentsu Soken style)
    ============================================================ */
 .section {
-  border-bottom: 1px solid var(--gray-200);
+  position: relative;
+  background: var(--white);
+}
+
+.section::after {
+  content: "";
+  display: block;
+  height: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.section--layer {
+  background: linear-gradient(90deg, var(--white), var(--gray-100));
+  background-size: 100%;
+}
+
+.section--layer .section-inner {
+  background: var(--white);
+  clip-path: polygon(30px 0, 100% 0, 100% calc(100% - 40px), calc(100% - 30px) 100%, 0 100%, 0 40px);
+  padding-bottom: calc(var(--section-gap) + 20px);
+  padding-top: calc(var(--section-gap) + 20px);
+}
+
+@media (width >= 900px) {
+  .section--layer .section-inner {
+    clip-path: polygon(60px 0, 100% 0, 100% calc(100% - 80px), calc(100% - 60px) 100%, 0 100%, 0 80px);
+  }
+}
+
+.section + .section {
+  border-top: none;
 }
 
 .section-inner {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: var(--section-gap) 5vw;
+  position: relative;
 }
 
 .section-header {
@@ -255,7 +341,7 @@ img {
 .section-header .section-number {
   font-size: var(--type-xs);
   font-weight: 600;
-  color: var(--gray-400);
+  color: var(--accent-light);
   letter-spacing: 0.15em;
 }
 
@@ -599,12 +685,24 @@ img {
 }
 
 /* ============================================================
-   NEXT STEP
+   NEXT STEP (Dentsu Soken dark section style)
    ============================================================ */
 .north-star {
   background: var(--black);
   color: var(--white);
   padding: 80px 5vw;
+  position: relative;
+}
+
+.north-star::after {
+  content: "";
+  display: block;
+  height: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(90deg, var(--white), var(--gray-100));
 }
 
 .north-star .north-star-inner {
