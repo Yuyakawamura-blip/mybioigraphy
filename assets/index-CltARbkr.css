@@ -830,28 +830,45 @@ img {
 }
 
 /* ============================================================
-   AI LAB — 05
+   AI — 05
    ============================================================ */
-.ai-lab {
-  background: var(--gray-50);
-}
-
 .ai-content {
   max-width: 800px;
 }
 
-.ai-content h2 {
+.ai-main-message h2 {
   font-size: var(--type-large);
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: -0.01em;
-  line-height: 1.4;
-  margin-bottom: 24px;
+  line-height: 1.5;
+  margin-bottom: 32px;
 }
 
-.ai-content .ai-lead {
+.ai-description {
   font-size: var(--type-medium);
   color: var(--gray-600);
   line-height: 1.85;
+  margin-bottom: 48px;
+  max-width: 600px;
+}
+
+.ai-goal {
+  border-top: 1px solid var(--gray-200);
+  padding-top: 32px;
+}
+
+.ai-goal h3 {
+  font-size: var(--type-medium);
+  font-weight: 600;
+  margin-bottom: 16px;
+  letter-spacing: 0.05em;
+}
+
+.ai-goal p {
+  font-size: var(--type-small);
+  color: var(--gray-600);
+  line-height: 1.85;
+  max-width: 700px;
 }
 
 /* ============================================================
